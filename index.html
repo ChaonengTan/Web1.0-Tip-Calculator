@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaoneng Tan Tip Calculator</title>
+</head>
+<body>
+    <div id="input">
+        <ul>
+            <li><h1>Tip Calculator</h1></li>
+            <li>
+                <label for="billCost">Bill: </label><br>
+                <input id="billCost" type="number">
+            </li>
+            <li>
+                <label for="percentageCost">Percentage Tax: </label><br>
+                <input id="percentageCost" type="number">
+            </li>
+            <li>
+                <label for="peopleNumber">Number of People: </label><br>
+                <input id="peopleNumber" type="number">
+            </li>
+        </ul>
+    </div>
+    <div id="output">
+
+    </div>
+</body>
+<script>
+    const output=document.querySelector("#output")
+    const bill=document.querySelector("#billCost")
+    const percentage=document.querySelector("#percentageCost")
+    const people=document.querySelector("#peopleNumber")
+
+    billCost.addEventListener('input', calculateTip)
+    percentageCost.addEventListener('input', calculateTip)
+    peopleNumber.addEventListener('input', calculateTip)
+
+    function calculateTip(){
+        const billCost=parseFloat(bill.value)
+        const percentageCost=parseFloat(percentage.value)
+        const peopleNumber=parseInt(people.value)
+        
+        const tip=((billCost*percentageCost)/100)
+        const totCost=(billCost+tip).toFixed(2)
+        const totPerPerson=((billCost+tip)/peopleNumber).toFixed(2)
+        output.innerHTML=
+        `<h2>Tip: ${tip}</h2>
+         <h2>Total Cost: ${totCost}</h2>
+         <h2>Total Per Person: ${totPerPerson}</h2>
+        `
+    }
+    calculateTip()
+</script>
+<style>
+    ul{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+</html>
